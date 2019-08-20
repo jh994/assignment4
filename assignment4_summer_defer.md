@@ -3,42 +3,27 @@ Statistical assignment 3
 \[james hawkey\] \[add your candidate number here - mandatory\]
 \[add date here\]
 
-Read data
----------
+## Read data
 
-In this assignment you will need to reproduce 5 ggplot graphs. I supply graphs as images; you need to write the ggplot2 code to reproduce them and knit and submit a Markdown document with the reproduced graphs (as well as your .Rmd file).
+In this assignment you will need to reproduce 5 ggplot graphs. I supply
+graphs as images; you need to write the ggplot2 code to reproduce them
+and knit and submit a Markdown document with the reproduced graphs (as
+well as your .Rmd file).
 
-First we will need to open and recode the data. I supply the code for this; you only need to change the file paths.
+First we will need to open and recode the data. I supply the code for
+this; you only need to change the file paths.
 
 ``` r
+library(rlang)
 library(tidyverse)
-```
 
-    ## Warning: package 'tidyverse' was built under R version 3.4.4
+Data8 <- read_tsv("C:/Users/Jenny/Documents/defer/h_indresp.tab")
 
-    ## Warning: package 'ggplot2' was built under R version 3.4.4
-
-    ## Warning: package 'tibble' was built under R version 3.4.4
-
-    ## Warning: package 'tidyr' was built under R version 3.4.4
-
-    ## Warning: package 'readr' was built under R version 3.4.4
-
-    ## Warning: package 'purrr' was built under R version 3.4.4
-
-    ## Warning: package 'dplyr' was built under R version 3.4.4
-
-    ## Warning: package 'stringr' was built under R version 3.4.4
-
-    ## Warning: package 'forcats' was built under R version 3.4.4
-
-``` r
-Data8 <- read_tsv("C:/Users/User/Documents/datan3/data/UKDA-6614-tab/tab/ukhls_w8/h_indresp.tab")
 
 Data8 <- Data8 %>%
   select(pidp, h_age_dv, h_payn_dv, h_gor_dv)
 
-Stable <- read_tsv("c:/Users/User/Documents/datan3/data/UKDA-6614-tab/tab/ukhls_wx/xwavedat.tab")
+Stable <- read_tsv("C:/Users/Jenny/Documents/defer/xwavedat.tab")
 
 
 Stable <- Stable %>%
@@ -79,9 +64,13 @@ Data <- Data %>%
   )
 ```
 
-Reproduce the following graphs as close as you can. For each graph, write two sentences (not more!) describing its main message.
+Reproduce the following graphs as close as you can. For each graph,
+write two sentences (not more\!) describing its main message.
 
-1.  Univariate distribution (20 points).
+1.  Univariate distribution (20
+points).
+
+<!-- end list -->
 
 ``` r
 #the graph shows the distroubtion of the net monthly pay of the respondents. 
@@ -98,7 +87,9 @@ ggplot(aes(x=h_payn_dv)) +
 
     ## Warning: Removed 22638 rows containing non-finite values (stat_bin).
 
-![](assignment4_summer_defer_files/figure-markdown_github/unnamed-chunk-2-1.png) 2. Line chart (20 points).
+![](assignment4_summer_defer_files/figure-gfm/unnamed-chunk-2-1.png)<!-- -->
+2. Line chart (20
+points).
 
 ``` r
 #the graph shows that both males and females have and increase in monthley earnings from the ages of 20 to 45
@@ -121,9 +112,12 @@ plotSmooth
 
     ## Warning: Removed 14403 rows containing non-finite values (stat_smooth).
 
-![](assignment4_summer_defer_files/figure-markdown_github/unnamed-chunk-3-1.png)
+![](assignment4_summer_defer_files/figure-gfm/unnamed-chunk-3-1.png)<!-- -->
 
-1.  Faceted bar chart (20 points)
+3.  Faceted bar chart (20
+points)
+
+<!-- end list -->
 
 ``` r
 # these bar charts show the difference between the median monthly net pay between between males and female with in countrys in the data set. all of the charts show that males average high monthely incomes than females.
@@ -142,9 +136,12 @@ ggplot(Data_medianPay, aes( x = sex_dv, y = medianPay ) ) +
       ylab("Median monthly net pay")
 ```
 
-![](assignment4_summer_defer_files/figure-markdown_github/unnamed-chunk-4-1.png)
+![](assignment4_summer_defer_files/figure-gfm/unnamed-chunk-4-1.png)<!-- -->
 
-1.  1.  Heat map (20 points).
+4.  4.  Heat map (20
+points).
+
+<!-- end list -->
 
 ``` r
 #this heat map shows the mean age of the different coutrys within the data set alnog with the different regions the darker the shade the youner the mean age nigeria as one of the youngest mean ages.
@@ -167,9 +164,12 @@ Data_meanAge %>%
   labs(fill = "Mean age")
 ```
 
-![](assignment4_summer_defer_files/figure-markdown_github/unnamed-chunk-5-1.png)
+![](assignment4_summer_defer_files/figure-gfm/unnamed-chunk-5-1.png)<!-- -->
 
-1.  Population pyramid (20 points).
+5.  Population pyramid (20
+points).
+
+<!-- end list -->
 
 ``` r
 # this population pyramid allows us to veiw the age disturbtion through out the population in shows a developed coutrys distrubtion. the under 25 age marker there are peaks of 300 n but after this there is a small decrease in the percentage falling to just over 200 in regards to the male population and 250 for the female. after this decrease there is a increase of porotion up untill the age of 50 where both male and female reach there peaks. after this the population protion inregards to ages begins to decrease along with age.
@@ -189,4 +189,4 @@ ggplot(Data_nAge, aes(x = h_age_dv, y= nAge, fill = sex_dv)) +
   coord_flip() 
 ```
 
-![](assignment4_summer_defer_files/figure-markdown_github/unnamed-chunk-6-1.png)
+![](assignment4_summer_defer_files/figure-gfm/unnamed-chunk-6-1.png)<!-- -->
